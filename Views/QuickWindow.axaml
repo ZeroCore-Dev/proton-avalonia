@@ -14,6 +14,8 @@
         ExtendClientAreaTitleBarHeightHint="-1"
         CanResize="False"
         WindowStartupLocation="CenterScreen"
+        xmlns:vm="using:proton_avalonia.ViewModels"
+        x:DataType="vm:QuickWindowViewModel"
         >
 
     <Border 
@@ -23,10 +25,11 @@
 		>
 		<DockPanel>
 			<DockPanel>
-				<Image Source="/Assets/SearchIcon.png" Width="32" Height="32" Margin="20,0,22,0" VerticalAlignment="Center"/>
+				<Image Source="{Binding QuickIconFromResource}" Width="32" Height="32" Margin="20,0,22,0" VerticalAlignment="Center"/>
+				<Image Source="avares://proton_avalonia/Assets/SearchIcon.png" Width="32" Height="32" Margin="20,0,22,0" VerticalAlignment="Center"/>
 				<TextBox
 					Background="Transparent"
-					Watermark="Type here to search"
+					Watermark="{Binding WatermarkPrompt}"
 					FontSize="22"
 					HorizontalAlignment="Stretch"
 					VerticalAlignment="Stretch"
