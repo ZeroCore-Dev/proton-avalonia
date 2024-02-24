@@ -11,5 +11,6 @@
   
     <Application.Styles>
         <FluentTheme />
+        <StyleInclude Source="avares://proton_avalonia/style/proton.style/Theme/Proton.axaml" />
     </Application.Styles>
 </Application>
