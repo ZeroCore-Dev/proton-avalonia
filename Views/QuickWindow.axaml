@@ -2,11 +2,12 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:av="clr-namespace:TheArtOfDev.HtmlRenderer.Avalonia;assembly=Avalonia.HtmlRenderer"
         mc:Ignorable="d" d:DesignWidth="605" d:DesignHeight="74"
         x:Class="proton_avalonia.Views.QuickWindow"
         Title="QuickWindow"
         Width="605"
-        Height="74"
+        Height="274"
         TransparencyLevelHint="AcrylicBlur"
         Background="Transparent"
         ExtendClientAreaChromeHints="NoChrome"
@@ -17,27 +18,37 @@
         xmlns:vm="using:proton_avalonia.ViewModels"
         x:DataType="vm:QuickWindowViewModel"
         >
+		<!--LostFocus="Window_LostFocus"-->
+	<Window.Resources>
+	</Window.Resources>
 
     <Border 
 		BorderThickness="2"
         BorderBrush="Gray"
         CornerRadius="5"
 		>
-		<DockPanel>
-			<DockPanel>
+		<StackPanel Margin="0" >
+			<DockPanel DockPanel.Dock="Top">
 				<Image Source="{Binding QuickIconFromResource}" Width="32" Height="32" Margin="20,0,22,0" VerticalAlignment="Center"/>
-				<Image Source="avares://proton_avalonia/Assets/SearchIcon.png" Width="32" Height="32" Margin="20,0,22,0" VerticalAlignment="Center"/>
-				<TextBox
-					Background="Transparent"
-					Watermark="{Binding WatermarkPrompt}"
-					FontSize="22"
-					HorizontalAlignment="Stretch"
-					VerticalAlignment="Stretch"
-					MaxLines="1"
-                    BorderThickness="0"
-					>
-				</TextBox>
+				<Border Height="74" >
+					<TextBox
+						Background="Transparent"
+						Watermark="{Binding WatermarkPrompt}"
+						FontSize="22"
+						HorizontalAlignment="Stretch"
+						VerticalAlignment="Stretch"
+						MaxLines="1"
+						BorderThickness="0"
+						Text="{Binding QuickWindowTextboxContent}"
+						>
+					</TextBox>
+				</Border>
 			</DockPanel>
-		</DockPanel>
+			<!--<Label Content="{Binding QuickWindowTextboxContent}" />-->
+			<Separator Background="{Binding SeparatorColor}" Margin="0"/>
+			<!--<UserControl Content="{Binding Content}" />-->
+			<av:HtmlLabel x:Name="_htmlLabel" Grid.Column="0" Background="Transparent" />
+			<!--加载插件内容-->
+		</StackPanel>
     </Border>
 </Window>
